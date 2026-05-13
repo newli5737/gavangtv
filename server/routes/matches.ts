@@ -67,4 +67,17 @@ router.post("/api/matches/:slug/comments", async (req, res) => {
   }
 });
 
+// GET /api/banners — public active banners
+router.get("/api/banners", async (_req, res) => {
+  try {
+    const banners = await prisma.banner.findMany({
+      where: { isActive: true },
+      orderBy: { sortOrder: "asc" },
+    });
+    res.json(banners);
+  } catch {
+    res.status(500).json({ error: "Failed to fetch banners" });
+  }
+});
+
 export default router;

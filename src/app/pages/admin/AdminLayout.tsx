@@ -1,13 +1,14 @@
 import { Outlet, Link, useLocation, useNavigate } from "react-router";
 import { useAuth } from "@/app/hooks/useAuth";
 import { useEffect } from "react";
-import { LayoutDashboard, Trophy, LogOut } from "lucide-react";
+import { LayoutDashboard, Trophy, Image, LogOut } from "lucide-react";
 import { motion } from "motion/react";
 import logo from "@/assets/logo.png";
 
 const navItems = [
   { label: "Tổng quan", path: "/admin", icon: LayoutDashboard },
   { label: "Trận đấu", path: "/admin/matches", icon: Trophy },
+  { label: "Banner", path: "/admin/banners", icon: Image },
 ];
 
 export function AdminLayout() {

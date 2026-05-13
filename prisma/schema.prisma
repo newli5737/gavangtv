@@ -66,3 +66,20 @@ model MatchEvent {
 
   @@index([matchId])
 }
+
+model Banner {
+  id        Int            @id @default(autoincrement())
+  position  BannerPosition
+  imageUrl  String
+  linkUrl   String         @default("")
+  title     String         @default("")
+  isActive  Boolean        @default(true)
+  sortOrder Int            @default(0)
+  createdAt DateTime       @default(now())
+  updatedAt DateTime       @updatedAt
+}
+
+enum BannerPosition {
+  LEFT
+  RIGHT
+}

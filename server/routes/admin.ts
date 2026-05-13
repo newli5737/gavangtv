@@ -195,4 +195,49 @@ router.delete("/api/admin/events/:id", authMiddleware, async (req, res) => {
   }
 });
 
+// ── BANNERS ──
+
+// GET /api/admin/banners
+router.get("/api/admin/banners", authMiddleware, async (_req, res) => {
+  try {
+    const banners = await prisma.banner.findMany({ orderBy: { sortOrder: "asc" } });
+    res.json(banners);
+  } catch {
+    res.status(500).json({ error: "Failed to fetch banners" });
+  }
+});
+
+// POST /api/admin/banners
+router.post("/api/admin/banners", authMiddleware, async (req, res) => {
+  try {
+    const banner = await prisma.banner.create({ data: req.body });
+    res.json(banner);
+  } catch (err: any) {
+    res.status(500).json({ error: err.message || "Failed to create banner" });
+  }
+});
+
+// PUT /api/admin/banners/:id
+router.put("/api/admin/banners/:id", authMiddleware, async (req, res) => {
+  try {
+    const banner = await prisma.banner.update({
+      where: { id: parseInt(req.params.id) },
+      data: req.body,
+    });
+    res.json(banner);
+  } catch (err: any) {
+    res.status(500).json({ error: err.message || "Failed to update banner" });
+  }
+});
+
+// DELETE /api/admin/banners/:id
+router.delete("/api/admin/banners/:id", authMiddleware, async (req, res) => {
+  try {
+    await prisma.banner.delete({ where: { id: parseInt(req.params.id) } });
+    res.json({ success: true });
+  } catch {
+    res.status(500).json({ error: "Failed to delete banner" });
+  }
+});
+
 export default router;

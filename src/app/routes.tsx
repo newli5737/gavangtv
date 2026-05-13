@@ -17,6 +17,7 @@ import { DashboardPage } from "./pages/admin/DashboardPage";
 import { MatchesPage } from "./pages/admin/MatchesPage";
 import { MatchEditPage } from "./pages/admin/MatchEditPage";
 import { MatchCommentsPage } from "./pages/admin/MatchCommentsPage";
+import { BannersPage } from "./pages/admin/BannersPage";
 
 export const router = createBrowserRouter([
   {
@@ -46,6 +47,7 @@ export const router = createBrowserRouter([
       { path: "matches/new", Component: MatchEditPage },
       { path: "matches/:id/edit", Component: MatchEditPage },
       { path: "matches/:id/comments", Component: MatchCommentsPage },
+      { path: "banners", Component: BannersPage },
     ],
   },
 ]);

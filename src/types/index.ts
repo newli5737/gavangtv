@@ -50,3 +50,17 @@ export interface AdminStats {
   totalViews: number;
   totalComments: number;
 }
+
+export type BannerPosition = "LEFT" | "RIGHT";
+
+export interface Banner {
+  id: number;
+  position: BannerPosition;
+  imageUrl: string;
+  linkUrl: string;
+  title: string;
+  isActive: boolean;
+  sortOrder: number;
+  createdAt: string;
+  updatedAt: string;
+}
