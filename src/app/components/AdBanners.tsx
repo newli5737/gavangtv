@@ -3,10 +3,10 @@ import type { Banner } from "@/types";
 
 // Default banners when no DB banners configured
 const DEFAULT_LEFT: Banner[] = [
-  { id: -1, position: "LEFT", imageUrl: "/banners/default-left.png", linkUrl: "#", title: "Xem trực tiếp", isActive: true, sortOrder: 0, createdAt: "", updatedAt: "" },
+  { id: -1, position: "LEFT", imageUrl: "/banners/trai.png", linkUrl: "#", title: "Banner trái", isActive: true, sortOrder: 0, createdAt: "", updatedAt: "" },
 ];
 const DEFAULT_RIGHT: Banner[] = [
-  { id: -2, position: "RIGHT", imageUrl: "/banners/default-right.png", linkUrl: "#", title: "Dự đoán", isActive: true, sortOrder: 0, createdAt: "", updatedAt: "" },
+  { id: -2, position: "RIGHT", imageUrl: "/banners/phai.png", linkUrl: "#", title: "Banner phải", isActive: true, sortOrder: 0, createdAt: "", updatedAt: "" },
 ];
 
 function BannerColumn({ banners, side }: { banners: Banner[]; side: "left" | "right" }) {
