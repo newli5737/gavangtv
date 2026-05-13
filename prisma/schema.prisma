@@ -1,0 +1,68 @@
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model Match {
+  id         Int         @id @default(autoincrement())
+  slug       String      @unique
+  league     String
+  leagueIcon String      @default("⚽")
+  homeTeam   String
+  homeIcon   String      @default("🔴")
+  homeScore  Int         @default(0)
+  awayTeam   String
+  awayIcon   String      @default("🔵")
+  awayScore  Int         @default(0)
+  minute     String      @default("0'")
+  status     MatchStatus @default(UPCOMING)
+  hasStream  Boolean     @default(false)
+  fakeViews  Int         @default(0)
+  matchDate  DateTime    @default(now())
+  createdAt  DateTime    @default(now())
+  updatedAt  DateTime    @updatedAt
+
+  comments Comment[]
+  events   MatchEvent[]
+
+  @@index([status])
+  @@index([matchDate])
+}
+
+enum MatchStatus {
+  UPCOMING
+  LIVE
+  FINISHED
+  CANCELLED
+}
+
+model Comment {
+  id         Int      @id @default(autoincrement())
+  matchId    Int
+  match      Match    @relation(fields: [matchId], references: [id], onDelete: Cascade)
+  username   String
+  message    String
+  isVerified Boolean  @default(false)
+  isFake     Boolean  @default(false)
+  createdAt  DateTime @default(now())
+
+  @@index([matchId])
+}
+
+model MatchEvent {
+  id          Int      @id @default(autoincrement())
+  matchId     Int
+  match       Match    @relation(fields: [matchId], references: [id], onDelete: Cascade)
+  time        String
+  type        String
+  team        String?
+  player      String?
+  description String
+  createdAt   DateTime @default(now())
+
+  @@index([matchId])
+}
