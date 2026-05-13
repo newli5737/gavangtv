@@ -1,5 +1,6 @@
 import { motion } from "motion/react";
 import { BarChart3 } from "lucide-react";
+import { TeamLogo } from "../components/TeamLogo";
 
 const leagues = [
   {
@@ -73,7 +74,12 @@ export function StandingsPage() {
                             "bg-secondary/50 text-muted-foreground"
                           }`}>{team.pos}</span>
                         </td>
-                        <td className="p-3 font-semibold text-sm">{team.name}</td>
+                        <td className="p-3">
+                          <div className="flex items-center gap-3">
+                            <TeamLogo teamName={team.name} className="w-6 h-6" />
+                            <span className="font-semibold text-sm">{team.name}</span>
+                          </div>
+                        </td>
                         <td className="p-3 text-center text-sm">{team.played}</td>
                         <td className="p-3 text-center text-sm text-green-400">{team.won}</td>
                         <td className="p-3 text-center text-sm text-yellow-400">{team.drawn}</td>

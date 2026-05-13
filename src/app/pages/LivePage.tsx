@@ -2,6 +2,7 @@ import { Link } from "react-router";
 import { motion } from "motion/react";
 import { Play, Radio, Users } from "lucide-react";
 import { useMatches } from "@/app/hooks/useMatches";
+import { TeamLogo } from "../components/TeamLogo";
 
 export function LivePage() {
   const { matches, loading } = useMatches("LIVE");
@@ -57,14 +58,18 @@ export function LivePage() {
 
                     <div className="flex items-center justify-between mb-6">
                       <div className="text-center flex-1">
-                        <div className="text-3xl mb-2">{match.homeIcon}</div>
+                        <div className="w-12 h-12 mx-auto mb-2 rounded-full bg-white/10 backdrop-blur-sm flex items-center justify-center p-1.5">
+                          <TeamLogo teamName={match.homeTeam} fallbackIcon={match.homeIcon} className="w-8 h-8" />
+                        </div>
                         <div className="text-sm font-semibold">{match.homeTeam}</div>
                       </div>
                       <div className="text-center px-4">
                         <div className="text-3xl font-bold">{match.homeScore} - {match.awayScore}</div>
                       </div>
                       <div className="text-center flex-1">
-                        <div className="text-3xl mb-2">{match.awayIcon}</div>
+                        <div className="w-12 h-12 mx-auto mb-2 rounded-full bg-white/10 backdrop-blur-sm flex items-center justify-center p-1.5">
+                          <TeamLogo teamName={match.awayTeam} fallbackIcon={match.awayIcon} className="w-8 h-8" />
+                        </div>
                         <div className="text-sm font-semibold">{match.awayTeam}</div>
                       </div>
                     </div>

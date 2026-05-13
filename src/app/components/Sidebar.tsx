@@ -1,5 +1,6 @@
 import { motion } from "motion/react";
 import { Clock, Trophy, Target, TrendingUp } from "lucide-react";
+import { TeamLogo } from "./TeamLogo";
 import type { Match } from "@/types";
 
 export function Sidebar({ matches }: { matches: Match[] }) {
@@ -31,10 +32,16 @@ export function Sidebar({ matches }: { matches: Match[] }) {
                   </span>
                   <span className="text-xs text-muted-foreground">{match.league}</span>
                 </div>
-                <div className="text-sm">
-                  <div className="font-semibold">{match.homeTeam}</div>
-                  <div className="text-muted-foreground text-xs">vs</div>
-                  <div className="font-semibold">{match.awayTeam}</div>
+                <div className="space-y-1.5">
+                  <div className="flex items-center gap-2">
+                    <TeamLogo teamName={match.homeTeam} fallbackIcon={match.homeIcon} className="w-5 h-5" />
+                    <span className="text-sm font-semibold">{match.homeTeam}</span>
+                  </div>
+                  <div className="text-muted-foreground text-xs pl-7">vs</div>
+                  <div className="flex items-center gap-2">
+                    <TeamLogo teamName={match.awayTeam} fallbackIcon={match.awayIcon} className="w-5 h-5" />
+                    <span className="text-sm font-semibold">{match.awayTeam}</span>
+                  </div>
                 </div>
               </motion.div>
             ))
@@ -54,6 +61,7 @@ export function Sidebar({ matches }: { matches: Match[] }) {
             {finishedMatches.map((match) => (
               <div key={match.id} className="flex items-center justify-between p-2 hover:bg-secondary/30 rounded-lg transition-colors cursor-pointer">
                 <div className="flex items-center gap-2 flex-1">
+                  <TeamLogo teamName={match.homeTeam} fallbackIcon={match.homeIcon} className="w-5 h-5" />
                   <span className="text-sm font-semibold">{match.homeTeam}</span>
                 </div>
                 <div className="px-3 py-1 bg-background rounded font-bold text-sm">
@@ -61,6 +69,7 @@ export function Sidebar({ matches }: { matches: Match[] }) {
                 </div>
                 <div className="flex items-center gap-2 flex-1 justify-end">
                   <span className="text-sm font-semibold">{match.awayTeam}</span>
+                  <TeamLogo teamName={match.awayTeam} fallbackIcon={match.awayIcon} className="w-5 h-5" />
                 </div>
               </div>
             ))}
@@ -79,8 +88,14 @@ export function Sidebar({ matches }: { matches: Match[] }) {
           <div className="space-y-2">
             {trending.map((match) => (
               <div key={match.id} className="p-2 hover:bg-secondary/30 rounded-lg transition-colors cursor-pointer">
-                <div className="text-sm font-semibold mb-1">{match.homeTeam} vs {match.awayTeam}</div>
-                <div className="flex items-center gap-1 text-xs text-muted-foreground">
+                <div className="flex items-center gap-2 mb-1">
+                  <TeamLogo teamName={match.homeTeam} fallbackIcon={match.homeIcon} className="w-5 h-5" />
+                  <span className="text-sm font-semibold">{match.homeTeam}</span>
+                  <span className="text-xs text-muted-foreground">vs</span>
+                  <span className="text-sm font-semibold">{match.awayTeam}</span>
+                  <TeamLogo teamName={match.awayTeam} fallbackIcon={match.awayIcon} className="w-5 h-5" />
+                </div>
+                <div className="flex items-center gap-1 text-xs text-muted-foreground pl-7">
                   <div className="w-1.5 h-1.5 bg-live rounded-full" />
                   <span>{match.fakeViews.toLocaleString()} đang xem</span>
                 </div>
