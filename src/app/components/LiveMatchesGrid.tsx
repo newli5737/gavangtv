@@ -1,6 +1,7 @@
 import { motion } from "motion/react";
 import { Play, BarChart3, Radio } from "lucide-react";
 import { Link } from "react-router";
+import { TeamLogo } from "./TeamLogo";
 import type { Match } from "@/types";
 
 export function LiveMatchesGrid({ matches, loading }: { matches: Match[]; loading?: boolean }) {
@@ -68,14 +69,14 @@ export function LiveMatchesGrid({ matches, loading }: { matches: Match[]; loadin
               <div className="space-y-3 mb-4">
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-3 flex-1">
-                    <span className="text-2xl">{match.homeIcon}</span>
+                    <TeamLogo teamName={match.homeTeam} fallbackIcon={match.homeIcon} className="w-8 h-8" />
                     <span className="font-semibold">{match.homeTeam}</span>
                   </div>
                   <span className="text-2xl font-bold">{match.homeScore}</span>
                 </div>
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-3 flex-1">
-                    <span className="text-2xl">{match.awayIcon}</span>
+                    <TeamLogo teamName={match.awayTeam} fallbackIcon={match.awayIcon} className="w-8 h-8" />
                     <span className="font-semibold">{match.awayTeam}</span>
                   </div>
                   <span className="text-2xl font-bold">{match.awayScore}</span>

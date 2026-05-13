@@ -4,6 +4,7 @@ import { Play, ArrowLeft } from "lucide-react";
 import { useMatch } from "@/app/hooks/useMatches";
 import { MatchStatistics } from "../components/MatchStatistics";
 import { LiveMatchEvents } from "../components/LiveMatchEvents";
+import { TeamLogo } from "../components/TeamLogo";
 
 export function MatchDetailPage() {
   const { slug } = useParams();
@@ -44,8 +45,8 @@ export function MatchDetailPage() {
 
             <div className="flex items-center justify-center gap-8 flex-wrap">
               <div className="text-center">
-                <div className="w-20 h-20 mx-auto mb-3 rounded-full bg-white/10 backdrop-blur-sm flex items-center justify-center">
-                  <span className="text-3xl">{match.homeIcon}</span>
+                <div className="w-20 h-20 mx-auto mb-3 rounded-full bg-white/10 backdrop-blur-sm flex items-center justify-center p-2">
+                  <TeamLogo teamName={match.homeTeam} fallbackIcon={match.homeIcon} className="w-14 h-14" />
                 </div>
                 <h3 className="text-lg font-semibold">{match.homeTeam}</h3>
               </div>
@@ -65,8 +66,8 @@ export function MatchDetailPage() {
                 {match.status === "UPCOMING" && <span className="text-sm text-muted-foreground">Sắp diễn ra</span>}
               </div>
               <div className="text-center">
-                <div className="w-20 h-20 mx-auto mb-3 rounded-full bg-white/10 backdrop-blur-sm flex items-center justify-center">
-                  <span className="text-3xl">{match.awayIcon}</span>
+                <div className="w-20 h-20 mx-auto mb-3 rounded-full bg-white/10 backdrop-blur-sm flex items-center justify-center p-2">
+                  <TeamLogo teamName={match.awayTeam} fallbackIcon={match.awayIcon} className="w-14 h-14" />
                 </div>
                 <h3 className="text-lg font-semibold">{match.awayTeam}</h3>
               </div>

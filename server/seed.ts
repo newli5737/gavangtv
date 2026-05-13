@@ -77,48 +77,48 @@ async function seed() {
     }),
   ]);
 
-  // Add events for Man United vs Chelsea
+  // Sự kiện Man United vs Chelsea
   const muMatch = matches[0];
   await prisma.matchEvent.createMany({
     data: [
-      { matchId: muMatch.id, time: "0'", type: "kickoff", description: "Match kicked off" },
-      { matchId: muMatch.id, time: "12'", type: "goal", team: "home", player: "Rashford", description: "Man United scores! Assist by Fernandes" },
-      { matchId: muMatch.id, time: "28'", type: "yellow", team: "away", player: "Kante", description: "Yellow card" },
-      { matchId: muMatch.id, time: "35'", type: "goal", team: "home", player: "Martial", description: "Man United scores! Assist by Sancho" },
-      { matchId: muMatch.id, time: "45'", type: "halftime", description: "Half Time — Man United 2-0 Chelsea" },
-      { matchId: muMatch.id, time: "45+2'", type: "yellow", team: "home", player: "Casemiro", description: "Yellow card" },
-      { matchId: muMatch.id, time: "52'", type: "substitution", team: "away", description: "Havertz OFF, Pulisic ON" },
-      { matchId: muMatch.id, time: "61'", type: "goal", team: "away", player: "Sterling", description: "Chelsea scores! Assist by Mount" },
-      { matchId: muMatch.id, time: "65'", type: "yellow", team: "away", player: "Silva", description: "Yellow card for tactical foul" },
+      { matchId: muMatch.id, time: "0'", type: "kickoff", description: "Trận đấu bắt đầu" },
+      { matchId: muMatch.id, time: "12'", type: "goal", team: "home", player: "Rashford", description: "Man United ghi bàn! Kiến tạo bởi Fernandes" },
+      { matchId: muMatch.id, time: "28'", type: "yellow", team: "away", player: "Kante", description: "Thẻ vàng" },
+      { matchId: muMatch.id, time: "35'", type: "goal", team: "home", player: "Martial", description: "Man United ghi bàn! Kiến tạo bởi Sancho" },
+      { matchId: muMatch.id, time: "45'", type: "halftime", description: "Hiệp 1 kết thúc — Man United 2-0 Chelsea" },
+      { matchId: muMatch.id, time: "45+2'", type: "yellow", team: "home", player: "Casemiro", description: "Thẻ vàng" },
+      { matchId: muMatch.id, time: "52'", type: "substitution", team: "away", description: "Havertz ra, Pulisic vào" },
+      { matchId: muMatch.id, time: "61'", type: "goal", team: "away", player: "Sterling", description: "Chelsea ghi bàn! Kiến tạo bởi Mount" },
+      { matchId: muMatch.id, time: "65'", type: "yellow", team: "away", player: "Silva", description: "Thẻ vàng do phạm lỗi chiến thuật" },
     ],
   });
 
-  // Add events for Barcelona vs Real Madrid
+  // Sự kiện Barcelona vs Real Madrid
   const barcaMatch = matches[1];
   await prisma.matchEvent.createMany({
     data: [
-      { matchId: barcaMatch.id, time: "0'", type: "kickoff", description: "El Clásico begins!" },
-      { matchId: barcaMatch.id, time: "15'", type: "goal", team: "home", player: "Yamal", description: "Barcelona scores!" },
-      { matchId: barcaMatch.id, time: "33'", type: "goal", team: "away", player: "Vinícius Jr", description: "Real Madrid equalizes!" },
-      { matchId: barcaMatch.id, time: "55'", type: "goal", team: "home", player: "Lewandowski", description: "Barcelona takes the lead!" },
-      { matchId: barcaMatch.id, time: "68'", type: "goal", team: "home", player: "Pedri", description: "Barcelona extends the lead!" },
-      { matchId: barcaMatch.id, time: "75'", type: "goal", team: "away", player: "Bellingham", description: "Real Madrid pulls one back!" },
+      { matchId: barcaMatch.id, time: "0'", type: "kickoff", description: "El Clásico bắt đầu!" },
+      { matchId: barcaMatch.id, time: "15'", type: "goal", team: "home", player: "Yamal", description: "Barcelona ghi bàn!" },
+      { matchId: barcaMatch.id, time: "33'", type: "goal", team: "away", player: "Vinícius Jr", description: "Real Madrid gỡ hòa!" },
+      { matchId: barcaMatch.id, time: "55'", type: "goal", team: "home", player: "Lewandowski", description: "Barcelona vươn lên dẫn trước!" },
+      { matchId: barcaMatch.id, time: "68'", type: "goal", team: "home", player: "Pedri", description: "Barcelona nâng tỷ số!" },
+      { matchId: barcaMatch.id, time: "75'", type: "goal", team: "away", player: "Bellingham", description: "Real Madrid rút ngắn tỷ số!" },
     ],
   });
 
-  // Add fake comments
+  // Bình luận ảo (tiếng Việt)
   await prisma.comment.createMany({
     data: [
-      { matchId: muMatch.id, username: "John_Red", message: "What a goal by Rashford! 🔥", isVerified: true, isFake: true },
-      { matchId: muMatch.id, username: "ChelseaFan23", message: "We need to defend better", isFake: true },
-      { matchId: muMatch.id, username: "FootballKing", message: "Great match so far!", isFake: true },
-      { matchId: muMatch.id, username: "ManUtdForever", message: "GGMU! Let's go United!", isVerified: true, isFake: true },
-      { matchId: muMatch.id, username: "Blues_88", message: "Come on Chelsea!", isFake: true },
-      { matchId: muMatch.id, username: "EPL_Watcher", message: "This is why Premier League is the best ⚽", isVerified: true, isFake: true },
-      { matchId: muMatch.id, username: "SoccerLover", message: "Fernandes assist was perfect", isFake: true },
-      { matchId: barcaMatch.id, username: "CulerForever", message: "VISCA BARCA!! 🔵🔴", isVerified: true, isFake: true },
-      { matchId: barcaMatch.id, username: "MadridFan99", message: "Hala Madrid y nada más!", isFake: true },
-      { matchId: barcaMatch.id, username: "LaLigaFan", message: "Best El Clásico in years!", isFake: true },
+      { matchId: muMatch.id, username: "FanMU_VN", message: "Bàn thắng tuyệt vời của Rashford! 🔥", isVerified: true, isFake: true },
+      { matchId: muMatch.id, username: "ChelseaFan23", message: "Chelsea phải phòng ngự tốt hơn", isFake: true },
+      { matchId: muMatch.id, username: "BongDaVN", message: "Trận đấu hay quá!", isFake: true },
+      { matchId: muMatch.id, username: "QuỷĐỏ_Forever", message: "GGMU! Lên đi United! 💪", isVerified: true, isFake: true },
+      { matchId: muMatch.id, username: "Blues_88", message: "Chelsea cố lên! Còn nửa trận nữa", isFake: true },
+      { matchId: muMatch.id, username: "NhậnĐịnh_BĐ", message: "Premier League luôn là giải đấu hấp dẫn nhất ⚽", isVerified: true, isFake: true },
+      { matchId: muMatch.id, username: "XemBong247", message: "Đường chuyền của Fernandes hoàn hảo quá", isFake: true },
+      { matchId: barcaMatch.id, username: "CulerVN", message: "VISCA BARCA!! 🔵🔴 Hay quá anh em!", isVerified: true, isFake: true },
+      { matchId: barcaMatch.id, username: "MadridFan99", message: "Hala Madrid! Chưa hết trận mà!", isFake: true },
+      { matchId: barcaMatch.id, username: "LaLiga_Fan", message: "El Clásico hay nhất mấy năm qua!", isFake: true },
     ],
   });
 

@@ -3,6 +3,7 @@ import { Play, Info, TrendingUp } from "lucide-react";
 import { Link } from "react-router";
 import { ImageWithFallback } from "./figma/ImageWithFallback";
 import { LiveMatchStats } from "./LiveMatchStats";
+import { TeamLogo } from "./TeamLogo";
 import type { Match } from "@/types";
 
 export function HeroSection({ match, loading }: { match?: Match; loading?: boolean }) {
@@ -36,8 +37,8 @@ export function HeroSection({ match, loading }: { match?: Match; loading?: boole
 
           <div className="flex items-center justify-center gap-8">
             <motion.div initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.2 }} className="text-center">
-              <div className="w-24 h-24 mx-auto mb-3 rounded-full bg-white/10 backdrop-blur-sm flex items-center justify-center">
-                <span className="text-4xl">{match.homeIcon}</span>
+              <div className="w-24 h-24 mx-auto mb-3 rounded-full bg-white/10 backdrop-blur-sm flex items-center justify-center p-3">
+                <TeamLogo teamName={match.homeTeam} fallbackIcon={match.homeIcon} className="w-16 h-16" />
               </div>
               <h3 className="text-xl font-semibold">{match.homeTeam}</h3>
             </motion.div>
@@ -63,8 +64,8 @@ export function HeroSection({ match, loading }: { match?: Match; loading?: boole
             </motion.div>
 
             <motion.div initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.2 }} className="text-center">
-              <div className="w-24 h-24 mx-auto mb-3 rounded-full bg-white/10 backdrop-blur-sm flex items-center justify-center">
-                <span className="text-4xl">{match.awayIcon}</span>
+              <div className="w-24 h-24 mx-auto mb-3 rounded-full bg-white/10 backdrop-blur-sm flex items-center justify-center p-3">
+                <TeamLogo teamName={match.awayTeam} fallbackIcon={match.awayIcon} className="w-16 h-16" />
               </div>
               <h3 className="text-xl font-semibold">{match.awayTeam}</h3>
             </motion.div>
