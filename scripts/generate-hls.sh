@@ -6,6 +6,11 @@ SOURCE_VIDEO="/home/ubuntu/gavangtv/video/videoplayback.mp4"
 
 mkdir -p "$HLS_DIR"
 
+if ! command -v ffmpeg &> /dev/null; then
+    echo "📦 Cài ffmpeg..."
+    sudo apt update && sudo apt install -y ffmpeg
+fi
+
 if [ ! -f "$SOURCE_VIDEO" ]; then
     echo "❌ Không tìm thấy video: $SOURCE_VIDEO"
     exit 1
