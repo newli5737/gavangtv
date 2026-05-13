@@ -8,6 +8,7 @@ import { ResultsPage } from "./pages/ResultsPage";
 import { StandingsPage } from "./pages/StandingsPage";
 import { HighlightsPage } from "./pages/HighlightsPage";
 import { NewsPage } from "./pages/NewsPage";
+import { NewsDetailPage } from "./pages/NewsDetailPage";
 import { BettingPage } from "./pages/BettingPage";
 import { Layout } from "./components/Layout";
 import { LoginPage } from "./pages/admin/LoginPage";
@@ -29,6 +30,7 @@ export const router = createBrowserRouter([
       { path: "standings", Component: StandingsPage },
       { path: "highlights", Component: HighlightsPage },
       { path: "news", Component: NewsPage },
+      { path: "news/:slug", Component: NewsDetailPage },
       { path: "betting", Component: BettingPage },
       { path: "match/:slug", Component: MatchDetailPage },
       { path: "watch/:slug", Component: LivestreamPage },
