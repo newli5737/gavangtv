@@ -2,9 +2,10 @@ module.exports = {
   apps: [
     {
       name: 'gavangtv-api',
-      script: 'server/index.ts',
-      interpreter: 'node_modules/.bin/tsx',
+      script: 'node_modules/.bin/tsx',
+      args: 'server/index.ts',
       cwd: '/home/ubuntu/gavangtv',
+      exec_mode: 'fork',
       env: {
         NODE_ENV: 'production',
         PORT: 4847,
