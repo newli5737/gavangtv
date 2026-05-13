@@ -6,13 +6,13 @@ import logo from "@/assets/logo.png";
 
 const menuItems = [
   { label: "Trang chủ", path: "/" },
-  { label: "Trực tiếp", path: "/#live" },
-  { label: "Lịch thi đấu", path: "/#fixtures" },
-  { label: "Kết quả", path: "/#results" },
-  { label: "Bảng xếp hạng", path: "/#standings" },
-  { label: "Highlights", path: "/#highlights" },
-  { label: "Tin tức", path: "/#news" },
-  { label: "Tỷ lệ kèo", path: "/#betting" },
+  { label: "Trực tiếp", path: "/live" },
+  { label: "Lịch thi đấu", path: "/fixtures" },
+  { label: "Kết quả", path: "/results" },
+  { label: "Bảng xếp hạng", path: "/standings" },
+  { label: "Highlights", path: "/highlights" },
+  { label: "Tin tức", path: "/news" },
+  { label: "Tỷ lệ kèo", path: "/betting" },
 ];
 
 export function Navigation() {
